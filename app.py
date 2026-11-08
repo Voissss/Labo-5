@@ -20,21 +20,21 @@ if st.session_state["sesion_iniciada"]:
  "Seleccione una opción",
  opciones
  )
- # Mostrar módulo de ventas
- if seleccion == "Ventas":
- mostrar_venta()
- # Mostrar módulo de información
- elif seleccion == "Información":
- st.header("Información del sistema")
- st.write(
- "Aplicación desarrollada durante "
- "el Laboratorio de SGI."
- )
- # Cerrar sesión
- if st.sidebar.button("Cerrar sesión"):
- st.session_state["sesion_iniciada"] = False
- st.session_state["usuario"] = ""
- st.rerun()
+# Mostrar módulo de ventas
+if seleccion == "Ventas":
+    mostrar_venta()
+
+# Mostrar módulo de información
+elif seleccion == "Información":
+    st.header("Información del sistema")
+    st.write("Aplicación desarrollada durante el Laboratorio de SGI.")
+
+    # Cerrar sesión
+    if st.sidebar.button("Cerrar sesión"):
+        st.session_state["sesion_iniciada"] = False
+        st.session_state["usuario"] = ""
+        st.rerun()
+
 else:
- # Si no hay sesión iniciada, mostrar login
- login()
+    # Si no hay sesión iniciada, mostrar login
+    login()
