@@ -1,6 +1,7 @@
 import streamlit as st
 from modulos.login import login
 from modulos.ventas import mostrar_venta
+from modulos.productos import mostrar_productos
 
 # Inicializar variables de sesión
 if "sesion_iniciada" not in st.session_state:
@@ -11,15 +12,20 @@ if "usuario" not in st.session_state:
 
 # Comprobar si el usuario inició sesión
 if st.session_state["sesion_iniciada"]:
-    st.sidebar.title("Menú")
+    st.sidebar.title("Menú Principal")
     st.sidebar.write(f"Usuario: {st.session_state['usuario']}")
     
-    opciones = ["Ventas", "Información"]
+    # Opciones del menú actualizadas con el nuevo módulo
+    opciones = ["Ventas", "Productos", "Información"]
     seleccion = st.sidebar.selectbox("Seleccione una opción", opciones)
 
     # Mostrar módulo de ventas
     if seleccion == "Ventas":
         mostrar_venta()
+        
+    # Mostrar nuevo módulo de productos
+    elif seleccion == "Productos":
+        mostrar_productos()
 
     # Mostrar módulo de información
     elif seleccion == "Información":
